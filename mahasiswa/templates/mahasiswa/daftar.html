@@ -1,23 +1,95 @@
-{% extends 'mahasiswa/base.html' %} {% load static %} {% block content %}
+{% extends 'mahasiswa/base.html' %}
+{% load static %}
+
+{% block content %}
+
 <h2>Daftar Mahasiswa</h2>
-<table border="1">
-  <tr>
-    <th>NIM</th>
-    <th>Nama</th>
-    <th>Program Studi</th>
-    <th>Angkatan</th>
-  </tr>
-  {% for mhs in mahasiswas %}
-  <tr>
-    <td>{{ mhs.nim }}</td>
-    <td>{{ mhs.nama }}</td>
-    <td>{{ mhs.programstudi }}</td>
-    <td>{{ mhs.angkatan }}</td>
-  </tr>
-  {% empty %}
-  <tr>
-    <td colspan="3">Belum ada data.</td>
-  </tr>
-  {% endfor %}
+
+<a href="{% url 'tambah_mahasiswa' %}" class="btn-tambah">
+    + Tambah Mahasiswa
+</a>
+
+<br><br>
+
+<table class="table-mahasiswa">
+    <thead>
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Program Studi</th>
+            <th>Angkatan</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for mhs in mahasiswas %}
+        <tr>
+            <td>{{ mhs.nim }}</td>
+            <td>{{ mhs.nama }}</td>
+            <td>{{ mhs.programstudi }}</td>
+            <td>{{ mhs.angkatan }}</td>
+
+            <td>
+                <a href="{% url 'edit_mahasiswa' mhs.id %}">
+                    Edit
+                </a>
+
+                |
+
+                <a href="{% url 'hapus_mahasiswa' mhs.id %}"
+                   onclick="return confirm('Yakin ingin menghapus data ini?')">
+                    Hapus
+                </a>
+            </td>
+        </tr>
+
+        {% empty %}
+        <tr>
+            <td colspan="5">
+                Belum ada data.
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
+
+<style>
+
+.table-mahasiswa{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    font-size:16px;
+}
+
+.table-mahasiswa th{
+    background:#0d6efd;
+    color:white;
+    padding:12px;
+}
+
+.table-mahasiswa td{
+    padding:10px;
+    border:1px solid #ddd;
+}
+
+.table-mahasiswa tr:nth-child(even){
+    background:#f5f5f5;
+}
+
+.btn-tambah{
+    background:#198754;
+    color:white;
+    text-decoration:none;
+    padding:10px 15px;
+    border-radius:5px;
+}
+
+.btn-tambah:hover{
+    opacity:0.9;
+}
+
+</style>
+
 {% endblock %}
