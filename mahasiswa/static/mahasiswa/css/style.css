@@ -41,7 +41,7 @@ h2 {
 table {
     margin-left: auto;
     margin-right: auto;
-    width: 90%;           /* tabel lebih lebar */
+    width: 75%;           /* tabel lebih lebar */
     border-collapse: collapse;
     font-size: 22px;      /* tulisan tabel lebih besar */
 }
