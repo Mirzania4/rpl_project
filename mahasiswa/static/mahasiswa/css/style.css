@@ -43,7 +43,7 @@ table {
     margin-right: auto;
     width: 75%;           /* tabel lebih lebar */
     border-collapse: collapse;
-    font-size: 22px;      /* tulisan tabel lebih besar */
+    font-size: 20px;      /* tulisan tabel lebih besar */
 }
 
 th {
